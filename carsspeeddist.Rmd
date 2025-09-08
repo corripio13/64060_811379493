@@ -1,18 +1,12 @@
----
-title: "carsspeeddist"
-output: pdf_document
-date: "2025-09-08"
----
-
-```
-{cars$speed_cat <- cut(cars$speed,
+```{r, echo=FALSE}
+cars$speed_cat <- cut(cars$speed,
                       breaks = c(0, 10, 15, 25),
                       labels = c("Slow", "Moderate", "Fast"))
-cars$log_dist <- log(cars$dist), echo=FALSE}
+cars$log_dist <- log(cars$dist)
 ```
 
-```
-{hist(cars$dist,
+```{r, echo=FALSE}
+hist(cars$dist,
      main = "Histogram of Stopping Distances",
      xlab = "Distance (in ft)",
      col = "blue",
@@ -22,5 +16,5 @@ plot(cars$speed, cars$dist,
      xlab = "Speed (in mph)",
      ylab = "Stopping Distance (in ft)",
      pch = 19, col = "red")
-abline(lm(dist ~ speed, data = cars), col = "blue", lwd = 2), echo=FALSE}
+abline(lm(dist ~ speed, data = cars), col = "blue", lwd = 2)
 ```
