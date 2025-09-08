@@ -1,0 +1,20 @@
+data("cars")
+cars$speed_cat <- cut(cars$speed,
+                      breaks = c(0, 10, 15, 25),
+                      labels = c("Slow", "Moderate", "Fast"))
+cars$log_dist <- log(cars$dist)
+
+# The log transform should reduce the skewness of dist, 
+# making it more normally distributed
+
+hist(cars$dist,
+     main = "Histogram of Stopping Distances",
+     xlab = "Distance (in ft)",
+     col = "blue",
+     border = "white")
+plot(cars$speed, cars$dist,
+     main = "Scatterplot of Speed vs. Stopping Distance",
+     xlab = "Speed (in mph)",
+     ylab = "Stopping Distance (in ft)",
+     pch = 19, col = "red")
+abline(lm(dist ~ speed, data = cars), col = "blue", lwd = 2)
